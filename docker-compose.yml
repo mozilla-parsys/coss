@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    container_name: coss_db
+    environment:
+      - POSTGRES_USER=coss_user
+      - POSTGRES_PASSWORD=coss_password
+      - POSTGRES_DB=coss_db
+  memcached:
+    image: memcached
+    container_name: coss_memcache
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    links:
+      - db
+      - memcached
+    command: ./bin/run-dev.sh

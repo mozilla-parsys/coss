@@ -1,0 +1,9 @@
+{
+  "name": "coss",
+  "description": "Community Support Software",
+  "repository": {
+    "url": "https://github.com/mozilla-parsys/coss/",
+    "license": "MPL 2.0",
+    "tests": "https://travis-ci.org/mozilla-parsys/coss/"
+  }
+}

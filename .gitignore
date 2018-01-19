@@ -1,0 +1,7 @@
+*.pyc
+*.sqlite3
+.env
+/static/
+.sass-cache
+*.css.map
+/media/
