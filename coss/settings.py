@@ -35,6 +35,22 @@ INSTALLED_APPS = [
     # Third party apps
     'django_jinja',
 
+    # Wagtail
+    'wagtail.wagtailforms',
+    'wagtail.wagtailredirects',
+    'wagtail.wagtailembeds',
+    'wagtail.wagtailsites',
+    'wagtail.wagtailusers',
+    'wagtail.wagtailsnippets',
+    'wagtail.wagtaildocs',
+    'wagtail.wagtailimages',
+    'wagtail.wagtailsearch',
+    'wagtail.wagtailadmin',
+    'wagtail.wagtailcore',
+
+    'modelcluster',
+    'taggit',
+
     # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -197,6 +213,12 @@ CSP_STYLE_SRC = (
     'https://*.mozilla.net',
 )
 CSP_REPORT_ONLY = config('CSP_REPORT_ONLY', default=False)
+
+##################
+# Wagtail Settings
+##################
+
+WAGTAIL_SITE_NAME = 'coss'
 
 # This is the bottom of settings.py
 if 'test' in sys.argv[1:2]:
