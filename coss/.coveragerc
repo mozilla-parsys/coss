@@ -1,0 +1,5 @@
+[run]
+source = coss
+
+[report]
+omit = */migrations/*

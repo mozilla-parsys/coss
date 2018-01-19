@@ -1,0 +1,19 @@
+SECRET_KEY = 'secret_key'
+# Site settings
+SITE_URL = http://127.0.0.1:8000
+ALLOWED_HOSTS = 127.0.0.1,.localhost
+# Assuming user coss_user with password coss_password and db name coss_db
+DATABASE_URL = 'postgres://coss_user:coss_password@coss_db/coss_db'
+# Debug flag
+DEBUG = True
+DEV = True
+# Cache
+CACHE_BACKEND = 'django.core.cache.backends.memcached.MemcachedCache'
+CACHE_URL = 'coss_memcache:11211'
+# Django-compressor
+COMPRESS_ENABLED=False
+COMPRESS_OFFLINE=False
+AXES_BEHIND_REVERSE_PROXY=False
+# mozillians.org API
+MOZILLIANS_API_URL=https://mozillians.org/api/v2/
+MOZILLIANS_API_KEY='super-secret'
