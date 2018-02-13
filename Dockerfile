@@ -9,5 +9,5 @@ RUN apt-get update && \
     build-essential ruby-sass && \
     rm -rf /var/lib/apt/lists/*
 
-COPY requirements /app/requirements/
+COPY . /app
 RUN pip install --no-cache-dir --require-hashes --no-deps -r requirements/requirements.txt
