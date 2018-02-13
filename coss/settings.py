@@ -64,13 +64,7 @@ SECURE_HSTS_SECONDS = config('SECURE_HSTS_SECONDS', default='31536000', cast=int
 SECURE_HSTS_INCLUDE_SUBDOMAINS = config('SECURE_HSTS_INCLUDE_SUBDOMAINS', default=False, cast=bool)
 SECURE_BROWSER_XSS_FILTER = config('SECURE_BROWSER_XSS_FILTER', default=True, cast=bool)
 SECURE_CONTENT_TYPE_NOSNIFF = config('SECURE_CONTENT_TYPE_NOSNIFF', default=True, cast=bool)
-
-# If the web server in front of Django terminates SSL
-# 1. Make sure the server strips X-Forwarded-Proto header from all incoming requests.
-# 2. Sets X-Forwarded-Proto header only for HTTPS request and sends it to Django.
-# 3. Uncomment the following line
-# See also https://docs.djangoproject.com/en/1.9/ref/settings/#secure-proxy-ssl-header
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
