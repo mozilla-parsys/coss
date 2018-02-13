@@ -8,6 +8,8 @@ services:
       - POSTGRES_USER=coss_user
       - POSTGRES_PASSWORD=coss_password
       - POSTGRES_DB=coss_db
+    volumes:
+      - postgres_volume:/var/lib/postgresql
   memcached:
     image: memcached
     container_name: coss_memcache
@@ -23,3 +25,5 @@ services:
       - db
       - memcached
     command: ./bin/run-dev.sh
+volumes:
+  postgres_volume:

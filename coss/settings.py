@@ -12,8 +12,13 @@ import sys
 
 from decouple import Csv, config
 from dj_database_url import parse as db_url
+from django_jinja.builtins import DEFAULT_EXTENSIONS
 from unipath import Path
 
+
+#######################
+# Environment Variables
+#######################
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 PROJECT_DIR = Path(__file__).parent.parent
@@ -22,104 +27,6 @@ STATIC_ROOT = Path('static').resolve()
 STATIC_URL = config('STATIC_URL', default='/static/')
 MEDIA_ROOT = Path('media').resolve()
 ROOT_URLCONF = 'coss.urls'
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
-
-# Application definition
-
-INSTALLED_APPS = [
-    # Project specific apps
-    'coss.base',
-
-    # Third party apps
-    'django_jinja',
-
-    # Wagtail
-    'wagtail.wagtailforms',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtailcore',
-
-    'modelcluster',
-    'taggit',
-
-    # Django apps
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-]
-
-for app in config('EXTRA_APPS', default='', cast=Csv()):
-    INSTALLED_APPS.append(app)
-
-
-MIDDLEWARE_CLASSES = (
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'session_csrf.CsrfMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'csp.middleware.CSPMiddleware',
-)
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django_jinja.backend.Jinja2',
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'match_extension': '.jinja',
-            'newstyle_gettext': True,
-            'context_processors': [
-                'session_csrf.context_processor',
-                'coss.base.context_processors.settings',
-                'coss.base.context_processors.i18n',
-            ],
-        }
-    },
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.contrib.auth.context_processors.auth',
-                'django.template.context_processors.debug',
-                'django.template.context_processors.i18n',
-                'django.template.context_processors.media',
-                'django.template.context_processors.static',
-                'django.template.context_processors.tz',
-                'django.contrib.messages.context_processors.messages',
-                'session_csrf.context_processor',
-            ],
-        }
-    },
-]
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': config('DATABASE_URL', cast=db_url)
-}
-
-WSGI_APPLICATION = 'coss.wsgi.application'
-
-#######################
-# Environment Variables
-#######################
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
@@ -165,15 +72,109 @@ SECURE_CONTENT_TYPE_NOSNIFF = config('SECURE_CONTENT_TYPE_NOSNIFF', default=True
 # See also https://docs.djangoproject.com/en/1.9/ref/settings/#secure-proxy-ssl-header
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Cache
-CACHES = {
-    'default': {
-        'BACKEND': config('CACHE_BACKEND',
-                          default='django.core.cache.backends.memcached.MemcachedCache'),
-        'LOCATION': config('CACHE_URL', default='127.0.0.1:11211'),
-    }
+DEBUG = config('DEBUG', default=False, cast=bool)
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
+
+# Application definition
+
+INSTALLED_APPS = [
+    # Project specific apps
+    'coss.base',
+
+    # Third party apps
+    'django_jinja',
+
+    # Wagtail
+    'wagtail.wagtailforms',
+    'wagtail.wagtailredirects',
+    'wagtail.wagtailembeds',
+    'wagtail.wagtailsites',
+    'wagtail.wagtailusers',
+    'wagtail.wagtailsnippets',
+    'wagtail.wagtaildocs',
+    'wagtail.wagtailimages',
+    'wagtail.wagtailsearch',
+    'wagtail.wagtailadmin',
+    'wagtail.wagtailcore',
+
+    'modelcluster',
+    'taggit',
+
+    # Django apps
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+
+for app in config('EXTRA_APPS', default='', cast=Csv()):
+    INSTALLED_APPS.append(app)
+
+
+MIDDLEWARE_CLASSES = (
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'session_csrf.CsrfMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
+)
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django_jinja.backend.Jinja2',
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'debug': DEBUG,
+            'match_extension': '.jinja',
+            'newstyle_gettext': True,
+            'context_processors': [
+                'session_csrf.context_processor',
+                'coss.base.context_processors.settings',
+                'coss.base.context_processors.i18n',
+            ],
+            'extensions': DEFAULT_EXTENSIONS + [
+                'wagtail.wagtailcore.jinja2tags.core',
+                'wagtail.wagtailadmin.jinja2tags.userbar',
+                'wagtail.wagtailimages.jinja2tags.images'
+            ],
+        }
+    },
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.template.context_processors.request',
+                'django.contrib.messages.context_processors.messages',
+                'session_csrf.context_processor',
+            ],
+        }
+    },
+]
+
+# Database
+# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+
+DATABASES = {
+    'default': config('DATABASE_URL', cast=db_url)
 }
 
+WSGI_APPLICATION = 'coss.wsgi.application'
 
 ###############
 # Configuration
@@ -214,6 +215,14 @@ CSP_STYLE_SRC = (
 )
 CSP_REPORT_ONLY = config('CSP_REPORT_ONLY', default=False)
 
+# Cache
+CACHES = {
+    'default': {
+        'BACKEND': config('CACHE_BACKEND',
+                          default='django.core.cache.backends.memcached.MemcachedCache'),
+        'LOCATION': config('CACHE_URL', default='127.0.0.1:11211'),
+    }
+}
 ##################
 # Wagtail Settings
 ##################
