@@ -5,3 +5,8 @@
 .sass-cache
 *.css.map
 /media/
+.DS_Store
+docs/_build
+.tox/
+MANIFEST
+.coverage
