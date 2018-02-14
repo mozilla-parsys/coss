@@ -1,0 +1,12 @@
+<footer class="footer">
+    <h2 class="visually-hidden">Service navigation</h2>
+    <ul class="footer__links">
+        <li><a href="https://github.com/mozilla/coss"><img src="/static/images/icons/contribute.svg" alt="" aria-hidden> Contribute</a></li>
+        <li><a href="https://www.mozilla.org/en-US/about/legal/"><img src="/static/images/icons/legal.svg" alt="" aria-hidden>Legal</a></li>
+        <li><a href="https://www.mozilla.org/en-US/privacy/"><img src="/static/images/icons/privacy.svg" alt="" aria-hidden>Privacy</a></li>
+    </ul>
+    <div class="footer__info">
+        <h3><img src="/static/images/mozilla.svg" alt="Mozilla"></h3>
+        <p>Mozilla is a global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at mozilla.org </p>
+    </div>
+</footer>
