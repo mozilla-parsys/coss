@@ -3,10 +3,14 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.static import serve as static_serve
 
+import session_csrf
+
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 
 from coss.base import views
 
+
+session_csrf.monkeypatch()
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
