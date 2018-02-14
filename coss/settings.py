@@ -45,7 +45,14 @@ USE_TZ = config('USE_TZ', default=True, cast=bool)
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-MEDIA_URL = config('MEDIA_URL', '/media/')
+# S3 storages
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME', default='')
+AWS_LOCATION = config('AWS_LOCATION', default='cms')
+AWS_S3_CUSTOM_DOMAIN = config('AWS_S3_CUSTOM_DOMAIN',
+                              default='{0}.s3.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME))
+
+MEDIA_URL = config('MEDIA_URL', default='https://{0}/'.format(AWS_S3_CUSTOM_DOMAIN))
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', default=not DEBUG, cast=bool)
 
@@ -80,6 +87,7 @@ INSTALLED_APPS = [
 
     # Third party apps
     'django_jinja',
+    'storages',
 
     # Wagtail
     'wagtail.wagtailforms',
