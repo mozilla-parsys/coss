@@ -22,7 +22,7 @@
             {% for entry in obj.value %}
               <li>
                 <a href="{{ entry['url'] }}">
-                   {{ entry['url_name'] }}
+                  {{ image(entry['icon'], "fill-24x24") }}{{ entry['url_name'] }}
                 </a>
               </li>
             {% endfor %}
