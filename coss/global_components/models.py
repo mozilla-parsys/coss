@@ -5,6 +5,7 @@ from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.wagtailsnippets.blocks import SnippetChooserBlock
 
 
 class FooterItemBlock(blocks.StructBlock):
@@ -28,3 +29,9 @@ class Footer(models.Model):
 
     def __str__(self):
         return self.footer_title
+
+
+class FooterChooserBlock(SnippetChooserBlock):
+
+    class Meta:
+        template = 'tags/footer.jinja'
