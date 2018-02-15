@@ -6,6 +6,7 @@ from django.views.static import serve as static_serve
 import session_csrf
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
+from wagtail.wagtailcore import urls as wagtail_urls
 
 from coss.base import views
 
@@ -18,6 +19,10 @@ urlpatterns = [
 
     # Wagtail admin page
     url(r'^cms-admin/', include(wagtailadmin_urls)),
+    # For anything not caught by a more specific rule above, hand over to
+    # Wagtail's page serving mechanism. This should be the last pattern in
+    # the list:
+    url(r'', include(wagtail_urls)),
 
     # contribute.json url
     url(r'^(?P<path>contribute\.json)$', static_serve,
