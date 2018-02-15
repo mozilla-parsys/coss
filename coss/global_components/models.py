@@ -10,6 +10,8 @@ from wagtail.wagtailsnippets.blocks import SnippetChooserBlock
 
 class FooterItemBlock(blocks.StructBlock):
     icon = ImageChooserBlock(required=True)
+    url_name = blocks.CharBlock(max_length=255, required=True,
+                                help_text='Add the name of the link.')
     url = blocks.URLBlock(required=True)
 
 

@@ -5,7 +5,6 @@ from ..models import Footer
 
 
 @library.global_function
-@library.render_with('tags/footer.jinja')
 @contextfunction
 def footer_tag(context):
     return {
