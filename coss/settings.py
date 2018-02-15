@@ -76,7 +76,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 INSTALLED_APPS = [
     # Project specific apps
     'coss.base',
-    'coss.global',
+    'coss.global_components',
 
     # Third party apps
     'django_jinja',
