@@ -1,4 +1,3 @@
-import datetime
 try:
     import urllib.parse as urlparse
 except ImportError:
@@ -6,12 +5,6 @@ except ImportError:
 
 from django_jinja import library
 from django.utils.http import urlencode
-
-
-@library.global_function
-def thisyear():
-    """The current year."""
-    return datetime.date.today().year
 
 
 @library.filter
