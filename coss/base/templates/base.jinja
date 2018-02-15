@@ -1,45 +1,16 @@
 <!DOCTYPE html>
-
 <html lang="{{ LANG }}" dir="{{ DIR }}">
-
-  <head>
-    <title>sugardough - mozilla webdev</title>
-  </head>
-  <body>
-    <style>
-      @font-face {
-          font-family: 'Fira Sans';
-          font-style: normal;
-          font-weight: 400;
-          src: url('https://www.mozilla.org/media/fonts/FiraSans-Regular.eot?#iefix') format('embedded-opentype'),
-               url('https://www.mozilla.org/media/fonts/FiraSans-Regular.woff') format('woff'),
-               url('https://www.mozilla.org/media/fonts/FiraSans-Regular.ttf') format('truetype');
-      }
-      body {
-        background: #7c9e00 radial-gradient(ellipse farthest-side at left top , #00549E 0px, transparent 100%) no-repeat scroll 0% 0% / auto 640px;
-        font-family: 'Fira Sans', 'Arial';
-        color: white;
-        margin: 0 auto;
-        width: 80%;
-        text-align: center;
-      }
-      header {
-        font-size: 1.2rem;
-      }
-      footer {
-        margin-top: 2rem;
-        font-size: 0.9rem;
-      }
-    </style>
-    <header>
-      <h1>mozilla webdev</h1>
-    </header>
-    It works! Now build something.
-
-      {% csrf_token %}
-
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link media="all" rel="stylesheet" href="{{ static('css/styles.css') }}">
+    <title>Mozilla - CoSS</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+</head>
+<body>
+    {% csrf_token %}
 
     {% block footer %}
     {% endblock %}
-  </body>
+    </body>
 </html>
