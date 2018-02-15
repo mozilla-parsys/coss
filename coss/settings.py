@@ -198,6 +198,7 @@ CSP_FONT_SRC = (
 )
 CSP_IMG_SRC = (
     "'self'",
+    "https://coss-production-media.s3.amazonaws.com"
 )
 CSP_SCRIPT_SRC = (
     "'self'",
@@ -205,6 +206,7 @@ CSP_SCRIPT_SRC = (
 CSP_STYLE_SRC = (
     "'self'",
     "'unsafe-inline'",
+    "https://fonts.googleapis.com"
 )
 
 CSP_WORKER_SRC = (
