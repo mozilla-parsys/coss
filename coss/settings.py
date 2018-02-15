@@ -232,3 +232,12 @@ WAGTAIL_SITE_NAME = 'coss'
 # This is the bottom of settings.py
 if 'test' in sys.argv[1:2]:
     SECURE_SSL_REDIRECT = False
+
+
+#####################
+# DEV, DEBUG Settings
+#####################
+
+if config('DEV', cast=bool, default=False):
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+    MEDIA_URL = '/media/'
