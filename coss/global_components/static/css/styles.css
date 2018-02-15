@@ -1,11 +1,13 @@
 body {
     line-height: 1.5;
+    margin: 0;
     font-family: "Open Sans", sans-serif;
 }
 .footer {
     background: #000;
     color: #9b9b9b;
     padding: 1em;
+    margin: 1em 0;
 }
 .footer--blue {
     background-color: #2b1e86;
