@@ -5,4 +5,4 @@ from session_csrf import anonymous_csrf
 
 @anonymous_csrf
 def home(request):
-    return render(request, 'coss/home.jinja')
+    return render(request, 'base.jinja')

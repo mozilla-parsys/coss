@@ -84,6 +84,7 @@ INSTALLED_APPS = [
     # Project specific apps
     'coss.base',
     'coss.global_components',
+    'coss.demo',
 
     # Third party apps
     'django_jinja',
