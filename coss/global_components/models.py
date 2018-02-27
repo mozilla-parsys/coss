@@ -37,3 +37,28 @@ class FooterChooserBlock(SnippetChooserBlock):
 
     class Meta:
         template = 'tags/footer.jinja'
+
+
+class CTABlock(blocks.StructBlock):
+    text = blocks.CharBlock(
+        max_length=255, required=False,
+        help_text='Add the text for "call to action".')
+    url = blocks.URLBlock(
+        required=False,
+        help_text='Add the URL for "call to action".')
+
+
+class FullWidthFeatureBlock(blocks.StructBlock):
+    headline = blocks.CharBlock(
+        max_length=255, required=False,
+        help_text='Add a headline for the feature.')
+    paragraph = blocks.TextBlock(
+        required=False,
+        help_text='Add a paragraph with the feature content.')
+    cta = CTABlock()
+    background_image = ImageChooserBlock(
+        required=False,
+        help_text='Add a background image for this feature.')
+
+    class Meta:
+        template = 'blocks/full_width_feature.jinja'
