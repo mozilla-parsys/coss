@@ -4,6 +4,7 @@ services:
   db:
     image: postgres
     container_name: coss_db
+    restart: always
     environment:
       - POSTGRES_USER=coss_user
       - POSTGRES_PASSWORD=coss_password
@@ -16,7 +17,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile.dev
     ports:
       - "8000:8000"
     volumes:
