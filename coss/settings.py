@@ -104,6 +104,10 @@ INSTALLED_APPS = [
     'wagtail.wagtailsearch',
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
+    'wagtail.contrib.modeladmin',
+    'wagtailmenus',
+    # wagtail condensedinlinepanel menus
+    'condensedinlinepanel',
 
     'modelcluster',
     'taggit',
@@ -154,6 +158,7 @@ TEMPLATES = [
                 'wagtail.wagtailcore.jinja2tags.core',
                 'wagtail.wagtailadmin.jinja2tags.userbar',
                 'wagtail.wagtailimages.jinja2tags.images'
+                'coss.base.jinja.MenuExtension'
             ],
         }
     },
@@ -213,7 +218,7 @@ CSP_WORKER_SRC = (
     "'self'",
 )
 
-CSP_REPORT_ONLY = config('CSP_REPORT_ONLY', default=False)
+CSP_REPORT_ONLY = config('CSP_REPORT_ONLY', default=False, cast=bool)
 
 # Exclude CMS admin from CSP
 CSP_EXCLUDE_URL_PREFIXES = ('/cms-admin',)
@@ -236,6 +241,10 @@ WAGTAIL_SITE_NAME = 'coss'
 # This is the bottom of settings.py
 if 'test' in sys.argv[1:2]:
     SECURE_SSL_REDIRECT = False
+
+# Wagtail Menus - enable Jinja2 support
+WAGTAILMENUS_USE_BACKEND_SPECIFIC_TEMPLATES = config('WAGTAILMENUS_USE_BACKEND_SPECIFIC_TEMPLATES',
+                                                     default=True, cast=bool)
 
 
 #####################

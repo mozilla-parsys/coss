@@ -10,6 +10,7 @@
 <body>
     {% csrf_token %}
 
+    {{ main_menu(template='global_components/main_menu.jinja') }}
     {% block footer %}
     {% endblock %}
     </body>
