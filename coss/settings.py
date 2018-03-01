@@ -157,7 +157,7 @@ TEMPLATES = [
             'extensions': DEFAULT_EXTENSIONS + [
                 'wagtail.wagtailcore.jinja2tags.core',
                 'wagtail.wagtailadmin.jinja2tags.userbar',
-                'wagtail.wagtailimages.jinja2tags.images'
+                'wagtail.wagtailimages.jinja2tags.images',
                 'coss.base.jinja.MenuExtension'
             ],
         }
