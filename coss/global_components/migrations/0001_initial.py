@@ -3,9 +3,9 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtailimages.blocks
+import wagtail.core.blocks
+import wagtail.core.fields
+import wagtail.images.blocks
 
 
 class Migration(migrations.Migration):
@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('footer_title', models.CharField(help_text='Add a short description for this footer.', max_length=255)),
-                ('footer_items', wagtail.wagtailcore.fields.StreamField((('entry', wagtail.wagtailcore.blocks.ListBlock(wagtail.wagtailcore.blocks.StructBlock((('icon', wagtail.wagtailimages.blocks.ImageChooserBlock(required=True)), ('url', wagtail.wagtailcore.blocks.URLBlock(required=True))), label='Footer Entry'))),))),
+                ('footer_items', wagtail.core.fields.StreamField((('entry', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock((('icon', wagtail.images.blocks.ImageChooserBlock(required=True)), ('url', wagtail.core.blocks.URLBlock(required=True))), label='Footer Entry'))),))),
             ],
         ),
     ]
