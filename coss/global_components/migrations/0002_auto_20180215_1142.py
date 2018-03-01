@@ -3,9 +3,9 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
-import wagtail.core.blocks
-import wagtail.core.fields
-import wagtail.images.blocks
+import wagtail.wagtailcore.blocks
+import wagtail.wagtailcore.fields
+import wagtail.wagtailimages.blocks
 
 
 class Migration(migrations.Migration):
@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='footer',
             name='footer_items',
-            field=wagtail.core.fields.StreamField((('entry', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock((('icon', wagtail.images.blocks.ImageChooserBlock(required=True)), ('url_name', wagtail.core.blocks.CharBlock(help_text='Add the name of the link.', max_length=255, required=True)), ('url', wagtail.core.blocks.URLBlock(required=True))), label='Footer Entry'))),)),
+            field=wagtail.wagtailcore.fields.StreamField((('entry', wagtail.wagtailcore.blocks.ListBlock(wagtail.wagtailcore.blocks.StructBlock((('icon', wagtail.wagtailimages.blocks.ImageChooserBlock(required=True)), ('url_name', wagtail.wagtailcore.blocks.CharBlock(help_text='Add the name of the link.', max_length=255, required=True)), ('url', wagtail.wagtailcore.blocks.URLBlock(required=True))), label='Footer Entry'))),)),
         ),
     ]
