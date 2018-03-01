@@ -11,3 +11,8 @@ def footer_tag(context):
         'footers': Footer.objects.all(),
         'request': context['request']
     }
+
+
+@library.filter
+def getattribute(obj, name, default):
+    return getattr(obj, name, default)

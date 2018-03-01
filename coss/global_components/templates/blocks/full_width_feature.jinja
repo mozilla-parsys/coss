@@ -1,7 +1,9 @@
-<div class="full-width-feature" data-background-image="{{ background_image.url }}">
-  <h1>{{ headline }}</h1>
-  <p>{{ paragraph }}</p>
-  <div class="cta">
-    <a href="{{ cta.url }}">{{ cta.text }}</a>
+{% set background = image(value.background_image, 'original') %}
+
+<div class="full-width-feature" data-background-image="{{ background|getattribute('url', '') }}">
+  <h1>{{ value.headline }}</h1>
+  <p>{{ value.paragraph }}</p>
+  <div class="value.cta">
+    <a href="{{ value.cta.url }}">{{ value.cta.text }}</a>
   </div>
 </div>
