@@ -104,10 +104,6 @@ INSTALLED_APPS = [
     'wagtail.wagtailsearch',
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
-    'wagtail.contrib.modeladmin',
-    'wagtailmenus',
-    # wagtail condensedinlinepanel menus
-    'condensedinlinepanel',
 
     'modelcluster',
     'taggit',
@@ -158,7 +154,6 @@ TEMPLATES = [
                 'wagtail.wagtailcore.jinja2tags.core',
                 'wagtail.wagtailadmin.jinja2tags.userbar',
                 'wagtail.wagtailimages.jinja2tags.images'
-                'coss.base.jinja.MenuExtension'
             ],
         }
     },
@@ -241,11 +236,6 @@ WAGTAIL_SITE_NAME = 'coss'
 # This is the bottom of settings.py
 if 'test' in sys.argv[1:2]:
     SECURE_SSL_REDIRECT = False
-
-# Wagtail Menus - enable Jinja2 support
-WAGTAILMENUS_USE_BACKEND_SPECIFIC_TEMPLATES = config('WAGTAILMENUS_USE_BACKEND_SPECIFIC_TEMPLATES',
-                                                     default=True, cast=bool)
-
 
 #####################
 # DEV, DEBUG Settings
