@@ -1,4 +1,10 @@
 {% extends "base.jinja" %}
+{% block header %}
+  {% include 'global_components/header_nav.jinja' %}
+{% endblock %}
+{% block content %}
+  {% include_block page.body %}
+{% endblock %}
 {% block footer %}
-{% include_block page.body %}
+  {% include 'tags/footer.jinja' %}
 {% endblock %}

@@ -3,16 +3,10 @@ from django.db import models
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailsnippets.blocks import SnippetChooserBlock
 
-
-class FooterItemBlock(blocks.StructBlock):
-    icon = ImageChooserBlock(required=True)
-    url_name = blocks.CharBlock(max_length=255, required=True,
-                                help_text='Add the name of the link.')
-    url = blocks.URLBlock(required=True)
+from coss.global_components.blocks import (ExternalLinkWithChildrenBlock, FooterItemBlock,
+                                           PageLinkWithChildrenBlock)
 
 
 @register_snippet
@@ -33,32 +27,18 @@ class Footer(models.Model):
         return self.footer_title
 
 
-class FooterChooserBlock(SnippetChooserBlock):
+@register_snippet
+class HeaderNav(models.Model):
+    name = models.CharField(max_length=255)
+    menu_items = StreamField([
+        ('external_link', ExternalLinkWithChildrenBlock(),),
+        ('page_link', PageLinkWithChildrenBlock(),),
+    ])
 
-    class Meta:
-        template = 'tags/footer.jinja'
+    panels = [
+        FieldPanel('name'),
+        StreamFieldPanel('menu_items'),
+    ]
 
-
-class CTABlock(blocks.StructBlock):
-    text = blocks.CharBlock(
-        max_length=255, required=False,
-        help_text='Add the text for "call to action".')
-    url = blocks.URLBlock(
-        required=False,
-        help_text='Add the URL for "call to action".')
-
-
-class FullWidthFeatureBlock(blocks.StructBlock):
-    headline = blocks.CharBlock(
-        max_length=255, required=False,
-        help_text='Add a headline for the feature.')
-    paragraph = blocks.TextBlock(
-        required=False,
-        help_text='Add a paragraph with the feature content.')
-    cta = CTABlock()
-    background_image = ImageChooserBlock(
-        required=False,
-        help_text='Add a background image for this feature.')
-
-    class Meta:
-        template = 'blocks/full_width_feature.jinja'
+    def __str__(self):
+        return self.name

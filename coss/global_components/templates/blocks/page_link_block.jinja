@@ -1,0 +1,12 @@
+<li>
+  <a href="{% block url %}#{% endblock %}">
+    {% block display_text %}{{value.display_text}}{% endblock %}
+  </a>
+  {% if value.children %}
+    <ul>
+      {% for child in value.children %}
+        {% include_block child %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</li>
