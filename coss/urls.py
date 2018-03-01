@@ -5,8 +5,8 @@ from django.views.static import serve as static_serve
 
 import session_csrf
 
-from wagtail.admin import urls as wagtailadmin_urls
-from wagtail.core import urls as wagtail_urls
+from wagtail.wagtailadmin import urls as wagtailadmin_urls
+from wagtail.wagtailcore import urls as wagtail_urls
 
 from coss.base import views
 

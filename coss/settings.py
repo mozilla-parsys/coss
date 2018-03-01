@@ -93,17 +93,17 @@ INSTALLED_APPS = [
     'storages',
 
     # Wagtail
-    'wagtail.contrib.forms',
-    'wagtail.contrib.redirects',
-    'wagtail.embeds',
-    'wagtail.sites',
-    'wagtail.users',
-    'wagtail.snippets',
-    'wagtail.documents',
-    'wagtail.images',
-    'wagtail.search',
-    'wagtail.admin',
-    'wagtail.core',
+    'wagtail.wagtailforms',
+    'wagtail.wagtailredirects',
+    'wagtail.wagtailembeds',
+    'wagtail.wagtailsites',
+    'wagtail.wagtailusers',
+    'wagtail.wagtailsnippets',
+    'wagtail.wagtaildocs',
+    'wagtail.wagtailimages',
+    'wagtail.wagtailsearch',
+    'wagtail.wagtailadmin',
+    'wagtail.wagtailcore',
 
     'modelcluster',
     'taggit',
@@ -134,8 +134,7 @@ MIDDLEWARE_CLASSES = (
     'csp.middleware.CSPMiddleware',
 
     # Wagtail middleware
-    'wagtail.core.middleware.SiteMiddleware',
-    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'wagtail.wagtailcore.middleware.SiteMiddleware',
 )
 
 TEMPLATES = [
@@ -152,9 +151,9 @@ TEMPLATES = [
                 'coss.base.context_processors.i18n',
             ],
             'extensions': DEFAULT_EXTENSIONS + [
-                'wagtail.core.jinja2tags.core',
-                'wagtail.admin.jinja2tags.userbar',
-                'wagtail.images.jinja2tags.images'
+                'wagtail.wagtailcore.jinja2tags.core',
+                'wagtail.wagtailadmin.jinja2tags.userbar',
+                'wagtail.wagtailimages.jinja2tags.images'
             ],
         }
     },
